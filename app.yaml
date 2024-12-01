@@ -1,0 +1,10 @@
+runtime: python310
+entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app --bind 0.0.0.0:8080 --timeout 120
+instance_class: F4_1G 
+
+health_check:
+  enable_health_check: true
+  check_interval_sec: 10
+  timeout_sec: 4
+  healthy_threshold: 2
+  unhealthy_threshold: 5
